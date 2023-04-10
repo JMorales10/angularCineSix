@@ -1,3 +1,128 @@
 @use '@angular/material' as mat;
 
-@include mat.core()
+@include mat.core();
+
+//Agregamos gamas de colores
+$custom-primary-pallete: (
+    50 : #e7edf9,
+    100 : #c2d2ef,
+    200 : #9ab4e5,
+    300 : #7196db,
+    400 : #5280d3,
+    500 : #3469cb,
+    600 : #2f61c6,
+    700 : #2756be,
+    800 : #214cb8,
+    900 : #153bac,
+    A100 : #dee5ff,
+    A200 : #abbdff,
+    A400 : #7895ff,
+    A700 : #5e81ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$custom-accent-pallete: (
+    50 : #ebe7f9,
+    100 : #ccc4f1,
+    200 : #ab9ce7,
+    300 : #8974dd,
+    400 : #6f57d6,
+    500 : #5639cf,
+    600 : #4f33ca,
+    700 : #452cc3,
+    800 : #3c24bd,
+    900 : #2b17b2,
+    A100 : #e8e5ff,
+    A200 : #bbb3ff,
+    A400 : #8d80ff,
+    A700 : #7766ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$custom-warn-pallete: (
+    50 : #e5f8f6,
+    100 : #bdede8,
+    200 : #91e2d9,
+    300 : #65d6ca,
+    400 : #44cdbe,
+    500 : #23c4b3,
+    600 : #1fbeac,
+    700 : #1ab6a3,
+    800 : #15af9a,
+    900 : #0ca28b,
+    A100 : #cffff7,
+    A200 : #9cffee,
+    A400 : #69ffe5,
+    A700 : #50ffe1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+//creamos paletas
+$my-app-primary: mat.define-palette($custom-primary-pallete, 500);
+$my-app-accent: mat.define-palette($custom-accent-pallete, 500);
+$my-app-warn: mat.define-palette($custom-warn-pallete, 500);
+
+//agregar paletas al tema
+$my-app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-app-primary,
+      accent: $my-app-accent,
+      warn: $my-app-warn,
+    ),
+  )
+);
+
+//agregamos el tema a los componentes
+@include mat.all-component-themes($my-app-theme);
+
+// referenciar archivo en angular.json
+
+
+
+
