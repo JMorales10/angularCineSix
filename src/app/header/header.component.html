@@ -1,0 +1,65 @@
+<mat-toolbar color="primary" class="w-60">
+  <div
+    class="max-w-screen flex items-center justify-between mx-auto w-full h-full"
+  >
+    <div class="absolute-left-0 flex items-center">
+      <a routerLink="/paginaPrincipal">
+        <img
+          src="../../assets/logo/CineSix.png"
+          class="h-14"
+          alt="Flowbite Logo"
+        />
+      </a>
+    </div>
+    <div
+      class="items-center justify-between hidden w-full md:flex md:w-auto"
+      id="mobile-menu-2"
+    >
+      <ul
+        class="flex flex-col font-medium p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0"
+      >
+        <li>
+          <a
+            href="#"
+            class="block py-2 pl-3 pr-4 rounded md:bg-transparent"
+            aria-current="page"
+            >Inicio</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
+            >Peliculas</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
+            >Venta de Entradas</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="block py-2 pl-3 pr-4 rounded md:hover:bg-transparent"
+            >Contacto</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="flex place-items-end">
+      <button mat-raised-button class="m-2" color="accent">Login</button>
+      <button mat-raised-button class="m-2" color="accent">Register</button>
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+        routerLink="/paginaPrincipal"
+      >
+      <mat-icon class="w-full">add_shopping_cart</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
