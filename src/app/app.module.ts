@@ -10,13 +10,21 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import { PaginaPrincipalComponent } from './vista/pagina-principal/pagina-principal.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { LoginComponent } from './header/login/login.component';
+import { RegisterComponent } from './header/register/register.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    PaginaPrincipalComponent
+    PaginaPrincipalComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AppRoutingModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

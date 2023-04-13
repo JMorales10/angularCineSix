@@ -1,9 +1,13 @@
 import { PaginaPrincipalComponent } from './vista/pagina-principal/pagina-principal.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './header/login/login.component';
+import { RegisterComponent } from './header/register/register.component';
 
 const routes: Routes = [
   { path: 'paginaPrincipal', component: PaginaPrincipalComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: '', redirectTo: '/paginaPrincipal', pathMatch: 'full' },
   { path: '**', component: PaginaPrincipalComponent },
 ];
