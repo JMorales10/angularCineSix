@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { PaginaPeliculasComponent } from './vista/pagina-peliculas/pagina-peliculas.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {FormsModule} from '@angular/forms';
     FooterComponent,
     PaginaPrincipalComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PaginaPeliculasComponent
   ],
   imports: [
     BrowserModule,
