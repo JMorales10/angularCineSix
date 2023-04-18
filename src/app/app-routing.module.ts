@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './header/login/login.component';
 import { RegisterComponent } from './header/register/register.component';
+import { PaginaEntradasComponent } from './vista/pagina-entradas/pagina-entradas.component';
 
 const routes: Routes = [
-  { path: 'paginaPrincipal', component: PaginaPrincipalComponent},
+  { path: 'Home', component: PaginaPrincipalComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'peliculas', component: PaginaPeliculasComponent},
-  { path: '', redirectTo: '/paginaPrincipal', pathMatch: 'full' },
+  { path: 'entradas', component: PaginaEntradasComponent},
+  { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: '**', component: PaginaPrincipalComponent },
 ];
 

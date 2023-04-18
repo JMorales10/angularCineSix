@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { PaginaPeliculasComponent } from './vista/pagina-peliculas/pagina-peliculas.component';
+import { PaginaEntradasComponent } from './vista/pagina-entradas/pagina-entradas.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PaginaPeliculasComponent } from './vista/pagina-peliculas/pagina-pelicu
     PaginaPrincipalComponent,
     LoginComponent,
     RegisterComponent,
-    PaginaPeliculasComponent
+    PaginaPeliculasComponent,
+    PaginaEntradasComponent
   ],
   imports: [
     BrowserModule,
