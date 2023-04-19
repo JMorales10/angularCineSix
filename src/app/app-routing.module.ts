@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './header/login/login.component';
 import { RegisterComponent } from './header/register/register.component';
 import { PaginaEntradasComponent } from './vista/pagina-entradas/pagina-entradas.component';
+import { PaginaAsientosComponent } from './vista/pagina-entradas/pagina-asientos/pagina-asientos.component';
+import { PaginaCompraComponent } from './vista/pagina-entradas/pagina-compra/pagina-compra.component';
 
 const routes: Routes = [
   { path: 'Home', component: PaginaPrincipalComponent},
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'peliculas', component: PaginaPeliculasComponent},
   { path: 'entradas', component: PaginaEntradasComponent},
+  { path: 'asientos', component: PaginaAsientosComponent},
+  { path: 'compra', component: PaginaCompraComponent},
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: '**', component: PaginaPrincipalComponent },
 ];
