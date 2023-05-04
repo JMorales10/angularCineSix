@@ -18,9 +18,9 @@ import { MatInputModule } from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { PaginaPeliculasComponent } from './vista/pagina-peliculas/pagina-peliculas.component';
 import { PaginaEntradasComponent } from './vista/pagina-entradas/pagina-entradas.component';
-import { PaginaAsientosComponent } from './vista/pagina-entradas/pagina-asientos/pagina-asientos.component';
 import { PaginaCompraComponent } from './vista/pagina-entradas/pagina-compra/pagina-compra.component';
 import {MatTableModule} from '@angular/material/table';
+import { PaginaContactoComponent } from './vista/pagina-contacto/pagina-contacto.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import {MatTableModule} from '@angular/material/table';
     RegisterComponent,
     PaginaPeliculasComponent,
     PaginaEntradasComponent,
-    PaginaAsientosComponent,
-    PaginaCompraComponent
+    PaginaCompraComponent,
+    PaginaContactoComponent
   ],
   imports: [
     BrowserModule,
