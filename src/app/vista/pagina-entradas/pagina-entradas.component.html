@@ -30,11 +30,14 @@
     <table>
       <tr *ngFor="let fila of dataSource">
         <td *ngFor="let element of fila" class="p-3">
-          <button mat-button *ngIf="element.asiento.ocupado">
+          <button mat-button *ngIf="element.asiento.ocupado == true">
             <img src="../../../../assets/images/seats/ocupado.png">
           </button>
           <button mat-button *ngIf="!element.asiento.ocupado">
             <img src="../../../../assets/images/seats/libre.png">
+          </button>
+          <button mat-button *ngIf="element.asiento.ocupado == 'pasillo'">
+            <img src="../../../../assets/images/seats/pasillo.png" class="h-16">
           </button>
         </td>
       </tr>
