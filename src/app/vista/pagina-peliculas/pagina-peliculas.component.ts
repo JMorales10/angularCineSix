@@ -1,10 +1,28 @@
-import { Component } from '@angular/core';
+import { peliculaService } from 'src/app/shared/services/pelicula-service.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pagina-peliculas',
   templateUrl: './pagina-peliculas.component.html',
   styleUrls: ['./pagina-peliculas.component.css']
 })
-export class PaginaPeliculasComponent {
+export class PaginaPeliculasComponent implements OnInit{
+  public listPeliculas: any;
 
+  constructor(private filmService: peliculaService){}
+
+  ngOnInit(): void {
+    this.findAllPeliculas();
+  }
+
+  private findAllPeliculas():void{
+    this.filmService.findAllPeliculas().subscribe(
+      (data) => {
+        this.listPeliculas = data;
+      },
+      (error) => {
+        this.listPeliculas = error;
+      }
+    );
+  }
 }
