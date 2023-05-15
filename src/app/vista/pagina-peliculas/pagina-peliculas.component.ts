@@ -1,4 +1,4 @@
-import { peliculaService } from 'src/app/shared/services/pelicula-service.service';
+import { peliculaService } from 'src/app/shared/services/pelicula.service';
 import { Component, OnInit } from '@angular/core';
 import { IMAGES_URL } from 'src/constant'
 

@@ -1,4 +1,4 @@
-import { EntradaService } from 'src/app/shared/services/entradaService.service';
+import { EntradaService } from 'src/app/shared/services/entrada.service';
 import { entrada } from 'src/app/shared/interfaces/entrada';
 
 import { Component } from '@angular/core';
