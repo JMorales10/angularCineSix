@@ -22,8 +22,13 @@
       </ul>
     </div>
     <div class="flex justify-end items-center w-full">
-      <button mat-raised-button class="m-2" color="accent" routerLink="/login">Login</button>
-      <button mat-raised-button class="m-2" color="accent" routerLink="/register">Register</button>
+      <div *ngIf="!userLoggued">
+        <button mat-raised-button class="m-2" color="accent" routerLink="/login">Login</button>
+        <button mat-raised-button class="m-2" color="accent" routerLink="/register">Register</button>
+      </div>
+      <div *ngIf="userLoggued">
+        <button mat-raised-button class="m-2" color="accent" (click)="logout()">Log Out</button>
+      </div>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
         routerLink="/compra">
         <mat-icon class="w-full" >add_shopping_cart</mat-icon>

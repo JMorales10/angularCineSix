@@ -1,34 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../shared/interfaces/usuario';
 import { UsersService } from 'src/app/shared/services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
 
-  public loginUser: any;
+  public result: any = false;
 
-  constructor(private userService: UsersService) {}
-  ngOnInit(): void {
-    this.login();
-  }
+  constructor(private userService: UsersService, private router: Router) {}
 
-  public body: any = {
-    correo: "jesus@gmail.com",
-    password: "1234"
-  }
+  public login(form: any):void{
 
-  private login():void{
-    this.userService.login(this.body).subscribe(
+    const body: any = {
+      correo: form.email,
+      password: form.password
+    }
+
+    this.userService.login(body).subscribe(
       (data) => {
-        this.loginUser = data;
+        if(data.jwt != undefined) {
+          localStorage.setItem("jwt", data.jwt);
+        } else {
+          this.result = "Usuario o contraseña son incorrectos";
+        }
       },
       (error) => {
-        this.loginUser = error;
+        this.result = "Ha ocurrido un error";
+        console.log(error)
       }
-    );
+    ).add(async()=>{
+      await this.router.navigate(['/paginaPrincipal']);
+      location.reload();
+    });
   }
 }

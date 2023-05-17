@@ -10,11 +10,15 @@ const httpOptions={
   providedIn: 'root'
 })
 export class UsersService {
-  public urlPeliculas: any = 'http://localhost:8080/usuarios/login';
+  public urlUsuarios: any = 'http://localhost:8080/usuarios';
 
   constructor(private httpClient: HttpClient) { }
 
   public login(body: any): Observable<any>{
-    return this.httpClient.post<any>(this.urlPeliculas, body, httpOptions);
+    return this.httpClient.post<any>(this.urlUsuarios+'/login', body, httpOptions);
+  }
+
+  public register(body: any): Observable<any>{
+    return this.httpClient.post<any>(this.urlUsuarios, body, httpOptions);
   }
 }
