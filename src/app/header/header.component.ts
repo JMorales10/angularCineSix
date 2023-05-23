@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
@@ -10,10 +10,15 @@ export class HeaderComponent implements AfterViewInit{
 
   public userLoggued: any = false;
 
-  constructor (private router: Router){}
+  public isAdmin: any;
+
+  constructor (private userService: UsersService){}
 
   ngAfterViewInit(): void {
     this.loggued();
+    if(localStorage.getItem('jwt')) {
+      this.checkRoleUser(localStorage.getItem('jwt'))
+    }
   }
 
   public loggued () {
@@ -25,5 +30,13 @@ export class HeaderComponent implements AfterViewInit{
   public logout () {
     localStorage.removeItem('jwt');
     location.reload()
+  }
+
+  public checkRoleUser (jwt: any) {
+    this.userService.roleToken(jwt).subscribe(
+      (data: any) => {
+        this.isAdmin = data.rol
+      }
+    )
   }
 }

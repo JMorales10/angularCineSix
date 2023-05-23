@@ -21,4 +21,14 @@ export class UsersService {
   public register(body: any): Observable<any>{
     return this.httpClient.post<any>(this.urlUsuarios, body, httpOptions);
   }
+
+  public roleToken(jwt: any): Observable<any>{
+    let params;
+
+    if(localStorage.getItem('jwt')) {
+      params = new HttpHeaders().set('jwt', jwt);
+    }
+
+    return this.httpClient.get<any>(this.urlUsuarios+'/userRoleToken', {headers: params});
+  }
 }

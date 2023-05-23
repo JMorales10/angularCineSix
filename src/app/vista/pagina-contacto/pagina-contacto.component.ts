@@ -12,7 +12,7 @@ export class PaginaContactoComponent {
   }
    contactForm(form: any) {
     this.MessageService.sendMessage(form).subscribe();
-    this.router.navigate(["/paginaPrincipal"])
+    this.router.navigate(["/Home"])
    }
 
 

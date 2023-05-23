@@ -23,6 +23,7 @@ import {MatTableModule} from '@angular/material/table';
 import { PaginaContactoComponent } from './vista/pagina-contacto/pagina-contacto.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'src/app/shared/services/message.service';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MessageService } from 'src/app/shared/services/message.service';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

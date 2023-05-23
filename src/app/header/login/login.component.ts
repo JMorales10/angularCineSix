@@ -34,7 +34,7 @@ export class LoginComponent{
         console.log(error)
       }
     ).add(async()=>{
-      await this.router.navigate(['/paginaPrincipal']);
+      await this.router.navigate(['/Home']);
       location.reload();
     });
   }
