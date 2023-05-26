@@ -44,6 +44,18 @@
             <mat-icon>home</mat-icon>
             <span>Home</span>
           </button>
+          <button mat-menu-item class="text-center px-4 py-2 hover:bg-gray-100" routerLink="/userAdmin" *ngIf="isAdmin == 'admin'">
+            <mat-icon>supervisor_account</mat-icon>
+            <span>Lista Usuarios</span>
+          </button>
+          <button mat-menu-item class="text-center px-4 py-2 hover:bg-gray-100" routerLink="/peliculasAdmin" *ngIf="isAdmin == 'admin'">
+            <mat-icon>movie</mat-icon>
+            <span>Lista Peliculas</span>
+          </button>
+          <button mat-menu-item class="text-center px-4 py-2 hover:bg-gray-100" routerLink="/salasAdmin" *ngIf="isAdmin == 'admin'">
+            <mat-icon>home</mat-icon>
+            <span>Lista Salas</span>
+          </button>
           <button mat-menu-item class="text-center px-4 py-2 hover:bg-gray-100" (click)="logout()" color="primary">
             <mat-icon aria-hidden="false">login</mat-icon>
             <span>Logout</span>

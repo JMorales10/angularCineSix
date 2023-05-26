@@ -31,4 +31,8 @@ export class UsersService {
 
     return this.httpClient.get<any>(this.urlUsuarios+'/userRoleToken', {headers: params});
   }
+
+  public allUsers(): Observable<any>{
+    return this.httpClient.get<any>(this.urlUsuarios);
+  }
 }

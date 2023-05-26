@@ -8,21 +8,20 @@ import { UsersService } from './users.service';
 export class AdminGuard implements CanActivate {
   constructor(private router: Router, private userService: UsersService) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    let isAdmin = false
-    this.userService.roleToken(localStorage.getItem('jwt')).subscribe(
-      (data: any) => {
-        if(data.rol === 'admin') {
-          isAdmin = true;
-        }
+  async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if(localStorage.getItem('jwt')) {
+      const response = await this.isRoleAdmin();
+      if (response.rol === 'admin') {
+        return true;
       }
-    )
-
-    if (isAdmin) {
-      return true;
-    } else {
-      this.router.navigate(['/Home']);
-      return false;
     }
+
+    this.router.navigate(['/Home'])
+    return false;
+
+  }
+
+  async isRoleAdmin() {
+    return await this.userService.roleToken(localStorage.getItem('jwt')).toPromise();
   }
 }

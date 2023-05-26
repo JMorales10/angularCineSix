@@ -8,6 +8,10 @@ import { RegisterComponent } from './header/register/register.component';
 import { PaginaEntradasComponent } from './vista/pagina-entradas/pagina-entradas.component';
 import { PaginaCompraComponent } from './vista/pagina-entradas/pagina-compra/pagina-compra.component';
 import { PaginaContactoComponent } from './vista/pagina-contacto/pagina-contacto.component';
+import { PeliculasAdminComponent } from './vista/paginas-admin/peliculas-admin/peliculas-admin.component';
+import { UsuariosAdminComponent } from './vista/paginas-admin/usuarios-admin/usuarios-admin.component';
+import { SalasAdminComponent } from './vista/paginas-admin/salas-admin/salas-admin.component';
+import { AdminGuard } from './shared/services/adminGuard.service';
 
 const routes: Routes = [
   { path: 'Home', component: PaginaPrincipalComponent},
@@ -16,6 +20,9 @@ const routes: Routes = [
   { path: 'peliculas', component: PaginaPeliculasComponent},
   { path: 'entradas', component: PaginaEntradasComponent, canActivate: [AuthGuard]},
   { path: 'compra', component: PaginaCompraComponent, canActivate: [AuthGuard]},
+  { path: 'userAdmin', component: UsuariosAdminComponent, canActivate: [AdminGuard]},
+  { path: 'peliculasAdmin', component: PeliculasAdminComponent, canActivate: [AdminGuard]},
+  { path: 'salasAdmin', component: SalasAdminComponent, canActivate: [AdminGuard]},
   { path: 'contact', component: PaginaContactoComponent},
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: '**', component: PaginaPrincipalComponent },

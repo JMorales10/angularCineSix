@@ -24,6 +24,9 @@ import { PaginaContactoComponent } from './vista/pagina-contacto/pagina-contacto
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'src/app/shared/services/message.service';
 import {MatMenuModule} from '@angular/material/menu';
+import { PeliculasAdminComponent } from './vista/paginas-admin/peliculas-admin/peliculas-admin.component';
+import { UsuariosAdminComponent } from './vista/paginas-admin/usuarios-admin/usuarios-admin.component';
+import { SalasAdminComponent } from './vista/paginas-admin/salas-admin/salas-admin.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import {MatMenuModule} from '@angular/material/menu';
     PaginaPeliculasComponent,
     PaginaEntradasComponent,
     PaginaCompraComponent,
-    PaginaContactoComponent
+    PaginaContactoComponent,
+    PeliculasAdminComponent,
+    UsuariosAdminComponent,
+    SalasAdminComponent
   ],
   imports: [
     BrowserModule,
