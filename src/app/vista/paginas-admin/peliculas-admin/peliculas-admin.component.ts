@@ -4,6 +4,7 @@ import { FILMS_COLUMNS } from 'src/constant';
 import {MatDialog} from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { Router } from '@angular/router';
+import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
 
 
 @Component({
@@ -26,6 +27,17 @@ export class PeliculasAdminComponent {
       this.filmService.eliminarPeliculas(result.film.id).subscribe();
       window.location.reload();
     });
+  }
+
+  openUpdateDialog(id: any): void {
+    const dialogRef = this.dialog.open(UpdateDialogComponent, {
+      data: {film: this.listPeliculas.find((film: any) => film.id === id)},
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.filmService.eliminarPeliculas(result.film.id).subscribe();
+    //   window.location.reload();
+    // });
   }
 
   ngOnInit(): void {

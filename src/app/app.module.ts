@@ -27,7 +27,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { PeliculasAdminComponent } from './vista/paginas-admin/peliculas-admin/peliculas-admin.component';
 import { UsuariosAdminComponent } from './vista/paginas-admin/usuarios-admin/usuarios-admin.component';
 import { SalasAdminComponent } from './vista/paginas-admin/salas-admin/salas-admin.component';
-import { UpdateDialogComponent } from './vista/paginas-admin/peliculas-admin/update-dialog/update-dialog.component';
+import { UpdateDialogComponent } from './vista/paginas-admin/update-dialog/update-dialog.component';
 import { DeleteDialogComponent } from './vista/paginas-admin/delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 

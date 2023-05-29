@@ -24,7 +24,7 @@
                 {{item.rol}}
               </td>
               <td class="flex items-center px-6 py-4 space-x-3">
-                <button type="submit" mat-raised-button color="accent">Editar</button>
+                <button type="submit" mat-raised-button color="accent" (click)="openUpdateDialog(item.id)">Editar</button>
                 <button type="submit" mat-raised-button color="warn" (click)="openDeleteDialog(item.id)">Borrar</button>
               </td>
           </tr>

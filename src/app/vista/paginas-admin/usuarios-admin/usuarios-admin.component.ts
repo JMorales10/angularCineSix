@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { USERS_COLUMNS } from 'src/constant';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
 
 @Component({
   selector: 'app-usuarios-admin',
@@ -26,6 +27,19 @@ export class UsuariosAdminComponent implements OnInit{
       window.location.reload();
     });
   }
+
+  openUpdateDialog(id: any): void {
+    const dialogRef = this.dialog.open(UpdateDialogComponent, {
+      data: {user: this.usersData.find((user: any) => user.id === id)},
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.userService.eliminarUsuarios(result.user.id).subscribe();
+    //   window.location.reload();
+    // });
+  }
+
+
 
   ngOnInit(): void {
     this.allUsers();

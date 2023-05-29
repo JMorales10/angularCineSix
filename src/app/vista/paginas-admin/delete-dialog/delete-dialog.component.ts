@@ -1,7 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { PeliculasAdminComponent } from '../peliculas-admin/peliculas-admin.component';
-import { Pelicula } from 'src/app/shared/interfaces/pelicula';
 
 @Component({
   selector: 'app-delete-dialog',
@@ -10,7 +8,7 @@ import { Pelicula } from 'src/app/shared/interfaces/pelicula';
 })
 export class DeleteDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<PeliculasAdminComponent>,
+    public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 

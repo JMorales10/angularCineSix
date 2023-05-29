@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SalaService } from 'src/app/shared/services/sala.service';
 import { SALAS_COLUMNS } from 'src/constant';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
 
 @Component({
   selector: 'app-salas-admin',
@@ -24,6 +25,17 @@ export class SalasAdminComponent {
       this.salaService.eliminarSalas(result.sala.id).subscribe();
       window.location.reload();
     });
+  }
+
+  openUpdateDialog(id: any): void {
+    const dialogRef = this.dialog.open(UpdateDialogComponent, {
+      data: {sala: this.listSalas.find((sala: any) => sala.id === id)},
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.filmService.eliminarPeliculas(result.film.id).subscribe();
+    //   window.location.reload();
+    // });
   }
 
   ngOnInit(): void {
