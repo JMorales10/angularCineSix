@@ -35,4 +35,8 @@ export class UsersService {
   public allUsers(): Observable<any>{
     return this.httpClient.get<any>(this.urlUsuarios);
   }
+
+  public eliminarUsuarios(id: any): Observable<any>{
+    return this.httpClient.delete<any>(this.urlUsuarios+'/'+id);
+  }
 }

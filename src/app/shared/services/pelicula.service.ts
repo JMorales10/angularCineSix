@@ -17,4 +17,8 @@ export class peliculaService {
   public findAllPeliculas(): Observable<any>{
     return this.httpClient.get<any>(this.urlPeliculas);
   }
+
+  public eliminarPeliculas(id: number): Observable<any>{
+    return this.httpClient.delete<any>(this.urlPeliculas+'/'+id)
+  }
 }

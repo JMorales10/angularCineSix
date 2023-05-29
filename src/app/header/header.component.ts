@@ -35,7 +35,12 @@ export class HeaderComponent implements AfterViewInit{
   public checkRoleUser (jwt: any) {
     this.userService.roleToken(jwt).subscribe(
       (data: any) => {
-        this.isAdmin = data.rol
+        if(data.error) {
+          localStorage.removeItem('jwt')
+          this.userLoggued = false;
+        } else {
+          this.isAdmin = data.rol
+        }
       }
     )
   }

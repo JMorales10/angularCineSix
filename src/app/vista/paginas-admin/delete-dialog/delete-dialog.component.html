@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+  <p>¿Desea eliminar este objeto?</p>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-center">
+  <button type="submit" mat-raised-button (click)="onNoClick()" class="w-max">Cancelar</button>
+  <button type="submit" mat-raised-button [mat-dialog-close]="data" cdkFocusInitial color="warn" class="w-max">Borrar</button>
+</div>
