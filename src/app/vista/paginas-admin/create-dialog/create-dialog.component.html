@@ -39,8 +39,18 @@
         <textarea id="descripcion" rows="4" name="descripcion" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300" #descripcion="ngModel" [(ngModel)]="data.film.descripcion"></textarea>
       </div>
       <div class="mb-6">
-        <label for="imagen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen</label>
-        <input type="text" id="imagen" name="imagen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" #imagen="ngModel" [(ngModel)]="data.film.imagen" required>
+        <input type="file" class="hidden"
+       (change)="onFileSelected($event)" #fileUpload >
+
+        <div class="file-upload">
+
+          {{fileName || "No file uploaded yet."}}
+
+          <button mat-mini-fab color="primary" class="upload-btn"
+            (click)="fileUpload.click()">
+              <mat-icon>attach_file</mat-icon>
+          </button>
+        </div>
       </div>
       <button type="submit" class="text-white bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" [mat-dialog-close]="data">Actualizar</button>
     </form>
@@ -55,7 +65,7 @@
         <label for="capacidad" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Capacidad</label>
         <input type="number" id="capacidad" name="capacidad" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "  #capacidad="ngModel" [(ngModel)]="data.sala.capacidad" required>
       </div>
-      <button type="submit" class="text-white bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" [mat-dialog-close]="data">Actualizar</button>
+      <button type="submit" class="text-white bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" [mat-dialog-close]="data">Crear</button>
     </form>
   </div>
 </div>

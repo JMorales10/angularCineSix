@@ -22,4 +22,12 @@ export class SalaService {
   public eliminarSalas(id: any): Observable<any>{
     return this.httpClient.delete<any>(this.urlSalas+'/'+id)
   }
+
+  public actualizarSalas(sala: any): Observable<any>{
+    return this.httpClient.put<any>(this.urlSalas+'/'+sala.id, sala, httpOptions)
+  }
+
+  public crearSala(sala: any): Observable<any>{
+    return this.httpClient.post<any>(this.urlSalas, sala, httpOptions)
+  }
 }

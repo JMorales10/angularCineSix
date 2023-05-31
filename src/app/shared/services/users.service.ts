@@ -39,4 +39,8 @@ export class UsersService {
   public eliminarUsuarios(id: any): Observable<any>{
     return this.httpClient.delete<any>(this.urlUsuarios+'/'+id);
   }
+
+  public actualizarUsuarios(user: any): Observable<any>{
+    return this.httpClient.put<any>(this.urlUsuarios+'/'+user.id, user, httpOptions);
+  }
 }

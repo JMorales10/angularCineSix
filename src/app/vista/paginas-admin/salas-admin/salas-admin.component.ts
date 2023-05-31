@@ -4,6 +4,7 @@ import { SalaService } from 'src/app/shared/services/sala.service';
 import { SALAS_COLUMNS } from 'src/constant';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
+import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
 
 @Component({
   selector: 'app-salas-admin',
@@ -32,10 +33,21 @@ export class SalasAdminComponent {
       data: {sala: this.listSalas.find((sala: any) => sala.id === id)},
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.filmService.eliminarPeliculas(result.film.id).subscribe();
-    //   window.location.reload();
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      this.salaService.actualizarSalas(result.sala).subscribe();
+      window.location.reload();
+    });
+  }
+
+  openCreateDialog(): void {
+    const dialogRef = this.dialog.open(CreateDialogComponent, {
+      data: {sala: {}},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.salaService.crearSala(result.sala).subscribe();
+      window.location.reload();
+    });
   }
 
   ngOnInit(): void {

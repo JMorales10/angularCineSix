@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 import { USERS_COLUMNS } from 'src/constant';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
+import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
 
 @Component({
   selector: 'app-usuarios-admin',
@@ -33,13 +34,12 @@ export class UsuariosAdminComponent implements OnInit{
       data: {user: this.usersData.find((user: any) => user.id === id)},
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.userService.eliminarUsuarios(result.user.id).subscribe();
-    //   window.location.reload();
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+      this.userService.actualizarUsuarios(result.user).subscribe();
+      window.location.reload();
+    });
   }
-
-
 
   ngOnInit(): void {
     this.allUsers();

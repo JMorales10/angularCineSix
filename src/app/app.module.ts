@@ -30,6 +30,7 @@ import { SalasAdminComponent } from './vista/paginas-admin/salas-admin/salas-adm
 import { UpdateDialogComponent } from './vista/paginas-admin/update-dialog/update-dialog.component';
 import { DeleteDialogComponent } from './vista/paginas-admin/delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CreateDialogComponent } from './vista/paginas-admin/create-dialog/create-dialog.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     UsuariosAdminComponent,
     SalasAdminComponent,
     UpdateDialogComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    CreateDialogComponent
   ],
   imports: [
     BrowserModule,

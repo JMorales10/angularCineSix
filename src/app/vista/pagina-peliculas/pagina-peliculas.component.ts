@@ -1,6 +1,5 @@
 import { peliculaService } from 'src/app/shared/services/pelicula.service';
 import { Component, OnInit } from '@angular/core';
-import { IMAGES_URL } from 'src/constant'
 
 @Component({
   selector: 'app-pagina-peliculas',
@@ -8,7 +7,6 @@ import { IMAGES_URL } from 'src/constant'
   styleUrls: ['./pagina-peliculas.component.css']
 })
 export class PaginaPeliculasComponent implements OnInit{
-  public images_url = IMAGES_URL;
   public listPeliculas: any;
 
   constructor(private filmService: peliculaService){}

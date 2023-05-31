@@ -21,4 +21,12 @@ export class peliculaService {
   public eliminarPeliculas(id: number): Observable<any>{
     return this.httpClient.delete<any>(this.urlPeliculas+'/'+id)
   }
+
+  public actualizarPelicula(pelicula: any): Observable<any>{
+    return this.httpClient.put<any>(this.urlPeliculas+'/'+pelicula.id, pelicula, httpOptions)
+  }
+
+  public crearPelicula(pelicula: any): Observable<any>{
+    return this.httpClient.post<any>(this.urlPeliculas, pelicula, httpOptions)
+  }
 }
