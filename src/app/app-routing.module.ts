@@ -12,13 +12,14 @@ import { PeliculasAdminComponent } from './vista/paginas-admin/peliculas-admin/p
 import { UsuariosAdminComponent } from './vista/paginas-admin/usuarios-admin/usuarios-admin.component';
 import { SalasAdminComponent } from './vista/paginas-admin/salas-admin/salas-admin.component';
 import { AdminGuard } from './shared/services/adminGuard.service';
+import { entradaGuard } from './shared/services/entradaGuard.service';
 
 const routes: Routes = [
   { path: 'Home', component: PaginaPrincipalComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'peliculas', component: PaginaPeliculasComponent},
-  { path: 'entradas', component: PaginaEntradasComponent, canActivate: [AuthGuard]},
+  { path: 'entradas/:id', component: PaginaEntradasComponent, canActivate: [AuthGuard, entradaGuard]},
   { path: 'compra', component: PaginaCompraComponent, canActivate: [AuthGuard]},
   { path: 'userAdmin', component: UsuariosAdminComponent, canActivate: [AdminGuard]},
   { path: 'peliculasAdmin', component: PeliculasAdminComponent, canActivate: [AdminGuard]},

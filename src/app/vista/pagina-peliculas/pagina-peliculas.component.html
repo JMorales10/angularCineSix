@@ -1,7 +1,7 @@
 <div class="m-24 grid md:grid-cols-3 gap-4 sm:grid-cols-2 lg:grid-cols-4">
   <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" *ngFor="let item of listPeliculas">
     <div>
-      <img class="rounded-t-lg" src="{{item.imagen}}" alt="" />
+      <img class="rounded-t-lg w-full" src="{{item.imagen}}" alt="" />
     </div>
     <div class="p-5">
       <div>
@@ -10,7 +10,7 @@
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{item.descripcion}}</p>
       <div
         class="inline-flex items-end text-sm font-medium text-center max-h-full">
-        <button mat-flat-button color="accent" routerLink="/entradas">
+        <button mat-flat-button color="accent" routerLink="/entradas/{{item.id}}" (click)="buyTickets()">
           Comprar Entradas
           <mat-icon class="ml-2">arrow_forward</mat-icon>
         </button>

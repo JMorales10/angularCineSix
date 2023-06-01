@@ -25,4 +25,8 @@ export class PaginaPeliculasComponent implements OnInit{
       }
     );
   }
+
+  public buyTickets() {
+    window.history.pushState({ prevUrl: window.location.href }, '');
+  }
 }
