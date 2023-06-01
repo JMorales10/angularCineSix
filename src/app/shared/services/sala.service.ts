@@ -19,6 +19,11 @@ export class SalaService {
     return this.httpClient.get<any>(this.urlSalas);
   }
 
+  public getSala(idSala: any): Observable<any>{
+    return this.httpClient.get<any>(this.urlSalas+'/'+idSala);
+  }
+
+
   public eliminarSalas(id: any): Observable<any>{
     return this.httpClient.delete<any>(this.urlSalas+'/'+id)
   }
