@@ -13,13 +13,14 @@ export class RegisterComponent {
 
   constructor(private userService: UsersService, private router: Router) {}
 
-  public register(form: any):void{
+  async register(form: any) {
+    console.log('se ejecuta')
 
     const register: any = {
       nombre: form.fullname,
       correo: form.email,
       password: form.password,
-      fechaNac: form.birthDate,
+      fecha_nac: form.birthDate,
       rol: "user"
     }
 
@@ -28,31 +29,42 @@ export class RegisterComponent {
       password: form.password
     }
 
-    this.userService.register(register).subscribe(
-      (data) => {
-        console.log(data)
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
+    await this.registerUser(register)
 
-    this.userService.login(login).subscribe(
-      (data) => {
-        if(data.jwt != undefined) {
-          localStorage.setItem("jwt", data.jwt);
-        } else {
-          this.result = "Ha ocurrido un error";
-        }
-      },
-      (error) => {
-        this.result = "Ha ocurrido un error";
-        console.log(error)
-      }
-    ).add(async()=>{
+    const resultLogin: any = await this.loginUser(login);
+
+    if(resultLogin.jwt != undefined) {
+      localStorage.setItem("jwt", resultLogin.jwt);
+
       await this.router.navigate(['/Home']);
-      location.reload();
-    });
+      location.reload()
+    } else {
+      this.result = "Ha ocurrido un error";
+    }
+
+  }
+
+  async registerUser (register: any) {
+    return await new Promise((resolve, reject) => {
+      this.userService.register(register).subscribe(
+        (data) => {
+          resolve(data)
+        },
+        (error) => {
+          resolve(error)
+        }
+      )
+    })
+  }
+
+  async loginUser (login: any) {
+    return await new Promise ((resolve, reject) => {
+      this.userService.login(login).subscribe(
+        (data) => {
+          resolve(data)
+        }
+      )
+    })
   }
 
 }

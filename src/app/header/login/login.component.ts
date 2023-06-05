@@ -22,9 +22,12 @@ export class LoginComponent{
     }
 
     this.userService.login(body).subscribe(
-      (data) => {
+      async (data) => {
         if(data.jwt != undefined) {
           localStorage.setItem("jwt", data.jwt);
+
+          await this.router.navigate(['/Home']);
+          location.reload();
         } else {
           this.result = "Usuario o contraseña son incorrectos";
         }
@@ -33,9 +36,6 @@ export class LoginComponent{
         this.result = "Ha ocurrido un error";
         console.log(error)
       }
-    ).add(async()=>{
-      await this.router.navigate(['/Home']);
-      location.reload();
-    });
+    )
   }
 }
