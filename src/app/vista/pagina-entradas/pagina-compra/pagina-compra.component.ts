@@ -3,7 +3,6 @@ import { now } from 'moment';
 import { peliculaService } from './../../../shared/services/pelicula.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CompraService } from 'src/app/shared/services/compra.service';
-import { EntradaService } from 'src/app/shared/services/entrada.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { PRECIO } from 'src/constant';
 import { Router } from '@angular/router';
@@ -22,7 +21,7 @@ export class PaginaCompraComponent implements OnInit, AfterViewInit{
   public dataLoaded: boolean =  false
   public precioTotal: number = 0;
 
-  constructor(private salaService: SalaService, private entradaService: EntradaService, private compraService: CompraService, private userService: UsersService, private peliculaService: peliculaService, private router: Router) { }
+  constructor(private salaService: SalaService, private compraService: CompraService, private userService: UsersService, private peliculaService: peliculaService, private router: Router) { }
 
   ngOnInit(): void {
     this.getEntradas()
@@ -64,7 +63,7 @@ export class PaginaCompraComponent implements OnInit, AfterViewInit{
 
   async getSeleccion() {
     return await new Promise((resolve, reject) => {
-      this.entradaService.getData().subscribe((data) => {
+      this.compraService.getData().subscribe((data) => {
         resolve(data)
       },
       (error) => {
@@ -100,25 +99,22 @@ export class PaginaCompraComponent implements OnInit, AfterViewInit{
   public comprarEntradas() {
 
     for (const entrada of this.entradasAPagar) {
+      console.log(entrada)
       const createEntrada = {
+        id_usuario: this.idUser,
         id_pelicula: entrada.id_pelicula.id,
         id_sala: entrada.id_sala.id,
         fila: entrada.fila,
-        fecha: entrada.fecha,
-        asiento: entrada.asiento
+        fecha_compra: entrada.fecha,
+        asiento: entrada.asiento,
+        precio: this.precio
       }
 
-      this.entradaService.createEntrada(createEntrada).subscribe(
-        (data) => {
-          console.log(data)
-        }
-      );
-
+      this.compraService.crearCompra(createEntrada).subscribe();
 
     }
 
-    this.entradaService.removeData();
-
+    this.compraService.removeData();
     this.router.navigate(['/Home'])
   }
 }

@@ -31,7 +31,6 @@ import { UpdateDialogComponent } from './vista/paginas-admin/update-dialog/updat
 import { DeleteDialogComponent } from './vista/paginas-admin/delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CreateDialogComponent } from './vista/paginas-admin/create-dialog/create-dialog.component';
-import { EntradaService } from './shared/services/entrada.service';
 import { CompraService } from './shared/services/compra.service';
 import { HorariosService } from './shared/services/horarios.service';
 import { peliculaService } from './shared/services/pelicula.service';
@@ -74,7 +73,7 @@ import { UsersService } from './shared/services/users.service';
     MatMenuModule,
     MatDialogModule
   ],
-  providers: [MessageService, EntradaService, CompraService, HorariosService, peliculaService, SalaService, UsersService],
+  providers: [MessageService, CompraService, HorariosService, peliculaService, SalaService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

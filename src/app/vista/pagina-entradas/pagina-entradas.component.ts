@@ -4,7 +4,8 @@ import * as moment from 'moment';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SalaService } from 'src/app/shared/services/sala.service';
-import { EntradaService } from 'src/app/shared/services/entrada.service';
+import { CompraService } from 'src/app/shared/services/compra.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-pagina-entradas',
@@ -13,7 +14,7 @@ import { EntradaService } from 'src/app/shared/services/entrada.service';
 })
 export class PaginaEntradasComponent implements OnInit{
 
-  constructor(private router: Router, private route: ActivatedRoute, private horarioService: HorariosService, private salaService: SalaService, private entradaService: EntradaService){}
+  constructor(private router: Router, private userService: UsersService, private route: ActivatedRoute, private horarioService: HorariosService, private salaService: SalaService, private compraService: CompraService){}
 
   public ELEMENT_DATA: any = []
   public ocupado : Boolean = false;
@@ -108,7 +109,7 @@ export class PaginaEntradasComponent implements OnInit{
 
   async getEntradas() {
     return await new Promise((resolve, reject) => {
-      this.entradaService.findAllEntradas().subscribe(
+      this.compraService.findAllCompras().subscribe(
         (data) => {
           resolve(data)
       });
@@ -134,7 +135,7 @@ export class PaginaEntradasComponent implements OnInit{
       seleccion.push(compra)
     }
 
-    this.entradaService.setData(seleccion)
+    this.compraService.setData(seleccion)
 
     this.router.navigate(['/compra']);
   }
