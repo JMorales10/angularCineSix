@@ -2,7 +2,7 @@ import { AuthGuard } from './shared/services/authGuard.service';
 import { PaginaPeliculasComponent } from './vista/pagina-peliculas/pagina-peliculas.component';
 import { PaginaPrincipalComponent } from './vista/pagina-principal/pagina-principal.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './header/login/login.component';
 import { RegisterComponent } from './header/register/register.component';
 import { PaginaEntradasComponent } from './vista/pagina-entradas/pagina-entradas.component';
@@ -13,11 +13,12 @@ import { UsuariosAdminComponent } from './vista/paginas-admin/usuarios-admin/usu
 import { SalasAdminComponent } from './vista/paginas-admin/salas-admin/salas-admin.component';
 import { AdminGuard } from './shared/services/adminGuard.service';
 import { entradaGuard } from './shared/services/entradaGuard.service';
+import { userGuard } from './shared/services/userGuard.service';
 
 const routes: Routes = [
   { path: 'Home', component: PaginaPrincipalComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: 'login', component: LoginComponent, canActivate: [userGuard]},
+  { path: 'register', component: RegisterComponent, canActivate: [userGuard]},
   { path: 'peliculas', component: PaginaPeliculasComponent},
   { path: 'entradas/:id', component: PaginaEntradasComponent, canActivate: [AuthGuard, entradaGuard]},
   { path: 'compra', component: PaginaCompraComponent, canActivate: [AuthGuard]},
