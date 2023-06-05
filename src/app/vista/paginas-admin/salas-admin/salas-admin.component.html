@@ -1,0 +1,29 @@
+<div class="sm:rounded-lg m-24">
+  <div class="my-5 text-end w-full">
+    <button type="submit" mat-raised-button color="warn" (click)="openCreateDialog()">Crear</button>
+  </div>
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="col" class="px-6 py-3" *ngFor="let item of columns">
+                {{item}}
+              </th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" *ngFor="let item of listSalas">
+              <td class="px-6 py-4">
+                {{item.numero_sala}}
+              </td>
+              <td class="px-6 py-4">
+                {{item.capacidad}}
+              </td>
+              <td class="flex items-center px-6 py-4 space-x-3">
+                <button type="submit" mat-raised-button color="accent" (click)="openUpdateDialog(item.id)">Editar</button>
+                <button type="submit" mat-raised-button color="warn" (click)="openDeleteDialog(item.id)">Borrar</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>

@@ -1,0 +1,38 @@
+<div>
+  <div class="my-8">
+    <form>
+      <div class="flex flex-row justify-center">
+        <div class="mx-16">
+          <label for="fecha" class="block text-base font-medium text-gray-900">Fecha y Sala</label>
+          <select id="fecha" ngModel (ngModelChange)="mySelectHandler($event)" name="select"
+            class="block px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option [ngValue]="item" *ngFor="let item of dateFilm">{{item.date}} Sala {{item.sala.numero_sala}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="flex justify-center my-8">
+    <table>
+      <tr *ngFor="let fila of dataSource">
+        <td *ngFor="let element of fila" class="p-3">
+          <button mat-button *ngIf="element.asiento.ocupado == true">
+            <img src="../../../../assets/images/seats/ocupado.png">
+          </button>
+          <button mat-button *ngIf="!element.asiento.ocupado" (click)="guardarButaca(element)">
+            <img src="../../../../assets/images/seats/libre.png">
+          </button>
+          <button mat-button *ngIf="element.asiento.ocupado == 'pasillo'">
+            <img src="../../../../assets/images/seats/pasillo.png" class="h-16">
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="flex justify-center my-8">
+    <button mat-raised-button color="accent"
+      class="text-white font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5" (click)="comprarEntradas()">Comprar entradas</button>
+  </div>
+</div>
