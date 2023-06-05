@@ -1,58 +1,26 @@
-<div class="m-24 grid grid-cols-3 space-x-40">
-  <div class="col-span-2">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-        <tr>
-          <th scope="col" class="px-6 py-3 text-center">Pelicula</th>
-          <th scope="col" class="px-6 py-3 text-center">Nombre</th>
-          <th scope="col" class="px-6 py-3 text-center">Precio</th>
-          <th scope="col" class="px-6 py-3 text-center">Stock</th>
-          <th scope="col" class="px-6 py-3 text-center"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let entrada of entradas">
-          <!-- <tr *ngIf="entrada.stock>0" [ngClass]="{'clearance': entrada.clearance}" class="bg-white border-b">
-              <td class="px-6 py-4"><img [src]="entrada.image" [alt]="entrada.name"></td>
-              <td class="px-6 py-4">{{entrada.name}}</td>
-              <td class="px-6 py-4">{{entrada.price}}</td>
-              <td class="px-6 py-4">{{entrada.stock}}</td>
-              <td class="px-6 py-4">
-                <div class="input-group input-group-sm mb-3">
-                  <button mat-button color="accent" class="text-white" (click)="downQuantity(entrada)">-</button>
-                  <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" [(ngModel)]="entrada.quantity" (focusout)="verifyentradaQuantity(entrada)"/>
-                  <button mat-button color="accent" class="text-white" (click)="upQuantity(entrada)" >+</button>
-                </div>
-              </td>
-          </tr> -->
-        </ng-container>
-      </tbody>
-    </table>
-  </div>
-  <div>
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-        <tr>
-          <th scope="col" class="px-6 py-3 text-center">Nombre</th>
-          <th scope="col" class="px-6 py-3 text-center">Cantidad</th>
-          <th scope="col" class="px-6 py-3 text-center">Precio Unitario</th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let entrada of entradas">
-        <tr class="bg-white border-b">
-          <!-- <td class="px-6 py-4">{{entrada.name}}</td>
-          <td class="px-6 py-4">{{entrada.quantity}}</td>
-          <td class="px-6 py-4">{{entrada.price}}</td> -->
-        </tr>
-        </ng-container>
-      </tbody>
-    </table>
-
-    <div>
-      <p>Total: {{total()}}</p>
-      <button mat-raised-button color="accent" routerLink="/compra"
-      class="text-white font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5">Comprar entradas</button>
+<div>
+    <div class="flex justify-center my-8 w-full">
+      <table class="text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <tr>
+            <th scope="col" class="px-6 py-3 text-center">Pelicula y sala</th>
+            <th scope="col" class="px-6 py-3 text-center">Precio</th>
+            <th scope="col" class="px-6 py-3 text-center">Fila y asiento</th>
+            <th scope="col" class="px-6 py-3 text-center"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entrada of entradasAPagar">
+            <td class="px-6 py-4">{{entrada.id_pelicula.nombre}}, Sala: {{entrada.id_sala.numero_sala}}</td>
+            <td class="px-6 py-4">{{precio}} €</td>
+            <td class="px-6 py-4">Fila: {{entrada.fila}} Asiento: {{entrada.asiento}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </div>
+    <div class="flex justify-center my-8 h-full items-center flex-col">
+      <p>Total: {{precioTotal}} €</p>
+      <button mat-raised-button color="accent"
+        class="text-white font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5" (click)="comprarEntradas()">Comprar entradas</button>
+    </div>
 </div>

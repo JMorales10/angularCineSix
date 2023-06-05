@@ -121,6 +121,8 @@ export class PaginaEntradasComponent implements OnInit{
   }
 
   async comprarEntradas() {
+    let seleccion: any = [];
+
     for(const entrada of this.compra) {
       const compra = {
         id_pelicula: this.idPelicula,
@@ -129,11 +131,10 @@ export class PaginaEntradasComponent implements OnInit{
         asiento: entrada.asiento.positionY,
         fecha: new Date(this.selectedDateFilm.date)
       }
-
-      this.entradaService.createEntrada(compra).subscribe((data) => {
-        console.log(data)
-      })
+      seleccion.push(compra)
     }
+
+    this.entradaService.setData(seleccion)
 
     this.router.navigate(['/compra']);
   }

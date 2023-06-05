@@ -1,50 +1,124 @@
-//import { EntradaService } from 'src/app/shared/services/entradaGuard.service';
-import { entrada } from 'src/app/shared/interfaces/entrada';
-
-import { Component } from '@angular/core';
+import { SalaService } from './../../../shared/services/sala.service';
+import { now } from 'moment';
+import { peliculaService } from './../../../shared/services/pelicula.service';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { CompraService } from 'src/app/shared/services/compra.service';
+import { EntradaService } from 'src/app/shared/services/entrada.service';
+import { UsersService } from 'src/app/shared/services/users.service';
+import { PRECIO } from 'src/constant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pagina-compra',
   templateUrl: './pagina-compra.component.html',
   styleUrls: ['./pagina-compra.component.css']
 })
-export class PaginaCompraComponent {
-  entradas : entrada[]  = [];
+export class PaginaCompraComponent implements OnInit, AfterViewInit{
 
-  //constructor(private entradaService: EntradaService) { }
+  public precio: number = PRECIO;
+  public compras: any;
+  public idUser: any;
+  public entradasAPagar: any = [];
+  public dataLoaded: boolean =  false
+  public precioTotal: number = 0;
 
+  constructor(private salaService: SalaService, private entradaService: EntradaService, private compraService: CompraService, private userService: UsersService, private peliculaService: peliculaService, private router: Router) { }
 
-  upQuantity(entrada : entrada): void{
-    // if(entrada.stock > entrada.quantity) {
-    //   entrada.quantity ++;
-    //   this.entradaService.addToCart(entrada);
-    // }
+  ngOnInit(): void {
+    this.getEntradas()
   }
 
-  downQuantity(entrada : entrada): void{
-    // if(entrada.quantity > 0) {
-    //   entrada.quantity --;
-    //   this.entradaService.addToCart(entrada);
-    // }
+  ngAfterViewInit(): void {
+    if (this.dataLoaded) {
+      return;
+    }
+    this.getEntradas();
   }
 
-  verifyBeerQuantity(entrada : entrada): void {
-    // if(entrada.stock < entrada.quantity) {
-    //   alert("No se pueden pedir más de las cervezas que hay en stock");
-    //   //entrada.quantity = entrada.stock;
-    // }
+  async getEntradas() {
+    await this.getUserId();
 
-    // if(entrada.quantity < 0) {
-    //   alert("No se pueden pedir menos que 0 cervezas");
-    //   entrada.quantity = 0;
-    // }
+    this.entradasAPagar = await this.getSeleccion();
+    for(const entrada of this.entradasAPagar) {
+      entrada.id_pelicula = await this.getPelicula(entrada.id_pelicula)
+      entrada.id_sala = await this.getSala(entrada.id_sala)
+    }
+
+    this.precioTotal = this.entradasAPagar.length * this.precio;
+    this.dataLoaded = true;
   }
 
-  total(){
-    let sum=0;
-    this.entradas.forEach(entrada => {
-      // sum += entrada.quantity * entrada.price
-    });
-    return sum;
+
+
+  async getUserId() {
+    this.userService.roleToken(localStorage.getItem('jwt')).subscribe(
+      (data: any) => {
+        if(data.error) {
+          localStorage.removeItem('jwt')
+        } else {
+          this.idUser = data.id;
+        }
+      }
+    )
+  }
+
+  async getSeleccion() {
+    return await new Promise((resolve, reject) => {
+      this.entradaService.getData().subscribe((data) => {
+        resolve(data)
+      },
+      (error) => {
+        console.log(error)
+      });
+    })
+  }
+
+  async getCompras() {
+    return await new Promise((resolve, reject) => {
+      this.compraService.findAllCompras().subscribe((data) => {
+        resolve(data)
+      })
+    })
+  }
+
+  async getPelicula(id: number) {
+    return await new Promise((resolve, reject) => {
+      this.peliculaService.findPelicula(id).subscribe((data) => {
+        resolve(data)
+      })
+    })
+  }
+
+  async getSala(id:number) {
+    return await new Promise((resolve, reject) => {
+      this.salaService.getSala(id).subscribe((data) => {
+        resolve(data)
+      })
+    })
+  }
+
+  public comprarEntradas() {
+
+    for (const entrada of this.entradasAPagar) {
+      const createEntrada = {
+        id_pelicula: entrada.id_pelicula.id,
+        id_sala: entrada.id_sala.id,
+        fila: entrada.fila,
+        fecha: entrada.fecha,
+        asiento: entrada.asiento
+      }
+
+      this.entradaService.createEntrada(createEntrada).subscribe(
+        (data) => {
+          console.log(data)
+        }
+      );
+
+
+    }
+
+    this.entradaService.removeData();
+
+    this.router.navigate(['/Home'])
   }
 }
