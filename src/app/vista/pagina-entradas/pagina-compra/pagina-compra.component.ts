@@ -38,16 +38,18 @@ export class PaginaCompraComponent implements OnInit, AfterViewInit{
   async getEntradas() {
 
     const result: any = await this.getSeleccion();
-    for(const entrada of result) {
-      if(this.idUser.id == entrada.id) {
-        entrada.id_pelicula = await this.getPelicula(entrada.id_pelicula)
-        entrada.id_sala = await this.getSala(entrada.id_sala)
-        this.entradasAPagar.push(entrada);
+    if(result != undefined) {
+      for(const entrada of result) {
+        if(this.idUser.id == entrada.id) {
+          entrada.id_pelicula = await this.getPelicula(entrada.id_pelicula)
+          entrada.id_sala = await this.getSala(entrada.id_sala)
+          this.entradasAPagar.push(entrada);
+        }
       }
-    }
 
-    this.precioTotal = this.entradasAPagar.length * this.precio;
-    this.dataLoaded = true;
+      this.precioTotal = this.entradasAPagar.length * this.precio;
+      this.dataLoaded = true;
+    }
   }
 
 
@@ -104,7 +106,7 @@ export class PaginaCompraComponent implements OnInit, AfterViewInit{
 
     for (const entrada of this.entradasAPagar) {
       const createEntrada = {
-        id_usuario: this.idUser,
+        id_usuario: this.idUser.id,
         id_pelicula: entrada.id_pelicula.id,
         id_sala: entrada.id_sala.id,
         fila: entrada.fila,
