@@ -14,7 +14,6 @@ export class RegisterComponent {
   constructor(private userService: UsersService, private router: Router) {}
 
   async register(form: any) {
-    console.log('se ejecuta')
 
     const register: any = {
       nombre: form.fullname,

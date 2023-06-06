@@ -35,7 +35,6 @@ export class UsuariosAdminComponent implements OnInit{
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
       this.userService.actualizarUsuarios(result.user).subscribe();
       window.location.reload();
     });

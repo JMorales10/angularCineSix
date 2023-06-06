@@ -25,6 +25,7 @@ export class PaginaEntradasComponent implements OnInit{
   public dataSource: any;
   public selectedDateFilm: any;
   public compra: any = [];
+  public idUser: any;
 
   ngOnInit(): void {
     this.horarios();
@@ -74,6 +75,8 @@ export class PaginaEntradasComponent implements OnInit{
   }
 
   async horarios() {
+    await this.getUserId();
+
     this.route.params
       .subscribe(params => {
         this.idPelicula = params['id'];
@@ -116,6 +119,18 @@ export class PaginaEntradasComponent implements OnInit{
     })
   }
 
+  async getUserId() {
+    this.userService.roleToken(localStorage.getItem('jwt')).subscribe(
+      (data: any) => {
+        if(data.error) {
+          localStorage.removeItem('jwt')
+        } else {
+          this.idUser = data.id;
+        }
+      }
+    )
+  }
+
   public guardarButaca(item: any) {
     this.compra.push(item);
     return item.asiento.ocupado = true;
@@ -130,8 +145,10 @@ export class PaginaEntradasComponent implements OnInit{
         id_sala: this.selectedDateFilm.sala.id,
         fila: entrada.asiento.positionX,
         asiento: entrada.asiento.positionY,
-        fecha: new Date(this.selectedDateFilm.date)
+        fecha: new Date(this.selectedDateFilm.date),
+        id: this.idUser
       }
+
       seleccion.push(compra)
     }
 

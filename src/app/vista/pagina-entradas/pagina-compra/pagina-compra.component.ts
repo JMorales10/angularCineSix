@@ -23,7 +23,8 @@ export class PaginaCompraComponent implements OnInit, AfterViewInit{
 
   constructor(private salaService: SalaService, private compraService: CompraService, private userService: UsersService, private peliculaService: peliculaService, private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.idUser = await this.getUserId();
     this.getEntradas()
   }
 
@@ -35,12 +36,14 @@ export class PaginaCompraComponent implements OnInit, AfterViewInit{
   }
 
   async getEntradas() {
-    await this.getUserId();
 
-    this.entradasAPagar = await this.getSeleccion();
-    for(const entrada of this.entradasAPagar) {
-      entrada.id_pelicula = await this.getPelicula(entrada.id_pelicula)
-      entrada.id_sala = await this.getSala(entrada.id_sala)
+    const result: any = await this.getSeleccion();
+    for(const entrada of result) {
+      if(this.idUser.id == entrada.id) {
+        entrada.id_pelicula = await this.getPelicula(entrada.id_pelicula)
+        entrada.id_sala = await this.getSala(entrada.id_sala)
+        this.entradasAPagar.push(entrada);
+      }
     }
 
     this.precioTotal = this.entradasAPagar.length * this.precio;
@@ -50,15 +53,16 @@ export class PaginaCompraComponent implements OnInit, AfterViewInit{
 
 
   async getUserId() {
-    this.userService.roleToken(localStorage.getItem('jwt')).subscribe(
-      (data: any) => {
-        if(data.error) {
-          localStorage.removeItem('jwt')
-        } else {
-          this.idUser = data.id;
+    return await new Promise((resolve, reject) => {
+      this.userService.roleToken(localStorage.getItem('jwt')).subscribe(
+        (data: any) => {
+          if(data.error) {
+            localStorage.removeItem('jwt')
+          }
+          resolve(data)
         }
-      }
-    )
+      )
+    })
   }
 
   async getSeleccion() {
@@ -99,7 +103,6 @@ export class PaginaCompraComponent implements OnInit, AfterViewInit{
   public comprarEntradas() {
 
     for (const entrada of this.entradasAPagar) {
-      console.log(entrada)
       const createEntrada = {
         id_usuario: this.idUser,
         id_pelicula: entrada.id_pelicula.id,

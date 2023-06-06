@@ -14,8 +14,11 @@
         <input type="date" id="duracion" name="duracion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" #fecha_nac="ngModel" [(ngModel)]="data.user.fecha_nac" required>
       </div>
       <div class="mb-6">
-        <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rol</label>
-        <input id="descripcion" rows="4" name="descripcion" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300" #rol="ngModel" [(ngModel)]="data.user.rol"/>
+        <label for="rol" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rol</label>
+        <select id="rol" name="rol" [(ngModel)]="data.user.rol" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+        </select>
       </div>
       <button type="submit" class="text-white bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" [mat-dialog-close]="data">Actualizar</button>
     </form>
@@ -40,7 +43,29 @@
       </div>
       <div class="mb-6">
         <label for="imagen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen</label>
-        <input type="text" id="imagen" name="imagen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" #imagen="ngModel" [(ngModel)]="data.film.imagen" required>
+        <input type="text" id="imagen" name="imagen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" #imagen="ngModel" [(ngModel)]="data.film.imagen" required maxlength="255">
+        <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">255 caracteres máximo.</p>
+      </div>
+      <button type="submit" class="text-white bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" [mat-dialog-close]="data">Actualizar</button>
+    </form>
+  </div>
+  <div *ngIf="type === 'horario'" class="p-16">
+    <form>
+      <div class="mb-6">
+        <label for="sala" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sala</label>
+        <select id="sala" (ngModelChange)="selectSala($event)" name="sala" [(ngModel)]="data.horario.id_sala.numero_sala" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <option [value]="item.id" *ngFor="let item of listSalas">{{item.numero_sala}}</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <label for="pelicula" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pelicula</label>
+        <select id="pelicula" (ngModelChange)="selectFilm($event)" name="pelicula" [(ngModel)]="data.horario.id_pelicula.id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <option [value]="item.id" *ngFor="let item of listPeliculas">{{item.nombre}}</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <label for="horario" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Horario</label>
+        <input type="datetime-local" id="horario" name="horario" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" #horario="ngModel" [(ngModel)]="data.horario.horario" required>
       </div>
       <button type="submit" class="text-white bg-blue-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" [mat-dialog-close]="data">Actualizar</button>
     </form>

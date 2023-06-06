@@ -52,7 +52,11 @@
             <mat-icon>home</mat-icon>
             <span>Lista Salas</span>
           </button>
-          <button mat-menu-item class="text-center px-4 py-2 hover:bg-gray-100" (click)="logout()" color="primary">
+          <button mat-menu-item class="text-center px-4 py-2 hover:bg-gray-100" routerLink="/horariosAdmin" *ngIf="isAdmin == 'admin'">
+            <mat-icon>access_time</mat-icon>
+            <span>Horarios</span>
+          </button>
+          <button mat-menu-item class="text-center px-4 py-2 hover:bg-gray-100" (click)="logout()">
             <mat-icon aria-hidden="false">login</mat-icon>
             <span>Logout</span>
           </button>

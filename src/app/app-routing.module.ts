@@ -14,6 +14,7 @@ import { SalasAdminComponent } from './vista/paginas-admin/salas-admin/salas-adm
 import { AdminGuard } from './shared/services/adminGuard.service';
 import { entradaGuard } from './shared/services/entradaGuard.service';
 import { userGuard } from './shared/services/userGuard.service';
+import { HorariosAdminComponent } from './vista/paginas-admin/horarios-admin/horarios-admin.component';
 
 const routes: Routes = [
   { path: 'Home', component: PaginaPrincipalComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'entradas/:id', component: PaginaEntradasComponent, canActivate: [AuthGuard, entradaGuard]},
   { path: 'compra', component: PaginaCompraComponent, canActivate: [AuthGuard]},
   { path: 'userAdmin', component: UsuariosAdminComponent, canActivate: [AdminGuard]},
+  { path: 'horariosAdmin', component: HorariosAdminComponent, canActivate: [AdminGuard]},
   { path: 'peliculasAdmin', component: PeliculasAdminComponent, canActivate: [AdminGuard]},
   { path: 'salasAdmin', component: SalasAdminComponent, canActivate: [AdminGuard]},
   { path: 'contact', component: PaginaContactoComponent},

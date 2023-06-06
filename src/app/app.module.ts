@@ -36,6 +36,7 @@ import { HorariosService } from './shared/services/horarios.service';
 import { peliculaService } from './shared/services/pelicula.service';
 import { SalaService } from './shared/services/sala.service';
 import { UsersService } from './shared/services/users.service';
+import { HorariosAdminComponent } from './vista/paginas-admin/horarios-admin/horarios-admin.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { UsersService } from './shared/services/users.service';
     SalasAdminComponent,
     UpdateDialogComponent,
     DeleteDialogComponent,
-    CreateDialogComponent
+    CreateDialogComponent,
+    HorariosAdminComponent
   ],
   imports: [
     BrowserModule,
