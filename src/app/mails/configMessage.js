@@ -4,8 +4,8 @@ module.exports = (formulario) => {
   service: 'gmail',
   secure: false,
   auth: {
-    user: "jesusmoralescanete@gmail.com",
-    pass: "xiluqdhrqbmupimz"
+    user: "cinesixsoporte@gmail.com",
+    pass: 'cwiuzlmoqqwxpxff'
   }
  });
 const mailOptions = {
