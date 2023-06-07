@@ -5,7 +5,7 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
 import { Router } from '@angular/router';
 import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
 import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
-import { HORARIOS_COLUMNS } from 'src/constant';
+import { HORARIOS_COLUMNS } from 'src/app/constant';
 import { peliculaService } from 'src/app/shared/services/pelicula.service';
 import { SalaService } from 'src/app/shared/services/sala.service';
 import * as moment from 'moment';

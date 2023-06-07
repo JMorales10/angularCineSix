@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SalaService } from 'src/app/shared/services/sala.service';
-import { SALAS_COLUMNS } from 'src/constant';
+import { SALAS_COLUMNS } from 'src/app/constant';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
 import { CreateDialogComponent } from '../create-dialog/create-dialog.component';

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersService } from 'src/app/shared/services/users.service';
-import { USERS_COLUMNS } from 'src/constant';
+import { USERS_COLUMNS } from 'src/app/constant';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
-import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
 
 @Component({
   selector: 'app-usuarios-admin',

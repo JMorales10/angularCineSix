@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { peliculaService } from 'src/app/shared/services/pelicula.service';
-import { FILMS_COLUMNS } from 'src/constant';
+import { FILMS_COLUMNS } from 'src/app/constant';
 import {MatDialog} from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { Router } from '@angular/router';

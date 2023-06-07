@@ -4,7 +4,7 @@ import { peliculaService } from './../../../shared/services/pelicula.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CompraService } from 'src/app/shared/services/compra.service';
 import { UsersService } from 'src/app/shared/services/users.service';
-import { PRECIO } from 'src/constant';
+import { PRECIO } from 'src/app/constant';
 import { Router } from '@angular/router';
 
 @Component({
