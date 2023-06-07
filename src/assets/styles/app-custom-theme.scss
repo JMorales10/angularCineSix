@@ -120,9 +120,3 @@ $my-app-theme: mat.define-light-theme(
 
 //agregamos el tema a los componentes
 @include mat.all-component-themes($my-app-theme);
-
-// referenciar archivo en angular.json
-
-
-
-
