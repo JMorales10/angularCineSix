@@ -3,5 +3,30 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat-Regular.ttf');
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url('./assets/fonts/Raleway-Light.ttf');
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('./assets/fonts/Rubik-Regular.ttf');
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
+
+mat-toolbar {
+  font-family: 'Raleway';
+}
+
+h2, h4, th {
+  font-family: 'Rubik';
+}
+
+p, label, button, td {
+  font-family: 'Montserrat';
+}
