@@ -18,13 +18,13 @@
       <tr *ngFor="let fila of dataSource">
         <td *ngFor="let element of fila" class="p-3">
           <button mat-button *ngIf="element.asiento.ocupado == true">
-            <img src="../../../../assets/images/seats/ocupado.png">
+            <img src="../../../../assets/images/ocupado.png">
           </button>
           <button mat-button *ngIf="!element.asiento.ocupado" (click)="guardarButaca(element)">
-            <img src="../../../../assets/images/seats/libre.png">
+            <img src="../../../../assets/images/libre.png">
           </button>
           <button mat-button *ngIf="element.asiento.ocupado == 'pasillo'">
-            <img src="../../../../assets/images/seats/pasillo.png" class="h-16">
+            <img src="../../../../assets/images/pasillo.png" class="h-16">
           </button>
         </td>
       </tr>
